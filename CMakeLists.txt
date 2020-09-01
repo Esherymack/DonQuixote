@@ -26,7 +26,7 @@ elseif(WIN32)
 endif()
 
 #Main
-set(SOURCE_FILES DonQuixote.cpp utils.cpp)
+set(SOURCE_FILES DonQuixote.cpp utils.cpp glerror_utility.cpp)
 add_executable(DonQuixote ${SOURCE_FILES})
 
 if(APPLE)
@@ -53,7 +53,12 @@ else()
     target_link_libraries(DonQuixote OpenGL::GL)
     target_link_libraries(DonQuixote glfw)
     target_link_libraries(DonQuixote GLEW)
+    # Add GLM
+    target_link_libraries(DonQuixote glm)
 endif()
 
-
-
+add_custom_target(MAKE_ZIP DEPENDS output)
+add_custom_command(OUTPUT output
+	WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
+	COMMAND ${CMAKE_COMMAND} -E tar cfv ${CMAKE_SOURCE_DIR}/solution.zip --format=zip --files-from=${CMAKE_SOURCE_DIR}/submit.txt
+)

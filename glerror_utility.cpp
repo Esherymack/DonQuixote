@@ -27,7 +27,7 @@
 
 #include "glerror_utility.h"
 
-void throw_if_gl_error(std::string msg)
+void thigle(std::string msg)
 {
     if(GLenum err; (err = glGetError()) != GL_NO_ERROR)
     {

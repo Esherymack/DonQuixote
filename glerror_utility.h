@@ -14,7 +14,7 @@
 
 #define EXC_MSG(msg) exception_message(msg, __FILE__, __LINE__)
 
-void throw_if_gl_error(std::string msg);
+void thigle(std::string msg);
 std::string exception_message(std::string message, const char * filename, std::size_t line);
 
 #endif //GLERROR_UTILITY_H
