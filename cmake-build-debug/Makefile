@@ -127,6 +127,19 @@ DonQuixote\fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\DonQuixote.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\DonQuixote.dir\build
 .PHONY : DonQuixote\fast
 
+#=============================================================================
+# Target rules for targets named MAKE_ZIP
+
+# Build rule for target.
+MAKE_ZIP: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 /nologo -$(MAKEFLAGS) MAKE_ZIP
+.PHONY : MAKE_ZIP
+
+# fast build rule for target.
+MAKE_ZIP\fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\MAKE_ZIP.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\MAKE_ZIP.dir\build
+.PHONY : MAKE_ZIP\fast
+
 DonQuixote.obj: DonQuixote.cpp.obj
 
 .PHONY : DonQuixote.obj
@@ -153,6 +166,33 @@ DonQuixote.s: DonQuixote.cpp.s
 DonQuixote.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\DonQuixote.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\DonQuixote.dir\DonQuixote.cpp.s
 .PHONY : DonQuixote.cpp.s
+
+glerror_utility.obj: glerror_utility.cpp.obj
+
+.PHONY : glerror_utility.obj
+
+# target to build an object file
+glerror_utility.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\DonQuixote.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\DonQuixote.dir\glerror_utility.cpp.obj
+.PHONY : glerror_utility.cpp.obj
+
+glerror_utility.i: glerror_utility.cpp.i
+
+.PHONY : glerror_utility.i
+
+# target to preprocess a source file
+glerror_utility.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\DonQuixote.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\DonQuixote.dir\glerror_utility.cpp.i
+.PHONY : glerror_utility.cpp.i
+
+glerror_utility.s: glerror_utility.cpp.s
+
+.PHONY : glerror_utility.s
+
+# target to generate assembly for a file
+glerror_utility.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\DonQuixote.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\DonQuixote.dir\glerror_utility.cpp.s
+.PHONY : glerror_utility.cpp.s
 
 utils.obj: utils.cpp.obj
 
@@ -189,10 +229,14 @@ help:
 	@echo ... depend
 	@echo ... edit_cache
 	@echo ... rebuild_cache
+	@echo ... MAKE_ZIP
 	@echo ... DonQuixote
 	@echo ... DonQuixote.obj
 	@echo ... DonQuixote.i
 	@echo ... DonQuixote.s
+	@echo ... glerror_utility.obj
+	@echo ... glerror_utility.i
+	@echo ... glerror_utility.s
 	@echo ... utils.obj
 	@echo ... utils.i
 	@echo ... utils.s

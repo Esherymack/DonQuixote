@@ -99,19 +99,40 @@ CMakeFiles\DonQuixote.dir\utils.cpp.s: cmake_force
  /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /FoNUL /FAs /FaCMakeFiles\DonQuixote.dir\utils.cpp.s /c "E:\programming\school 2020\370\assignments\CS370_Assign01\CS370_Assign01\utils.cpp"
 <<
 
+CMakeFiles\DonQuixote.dir\glerror_utility.cpp.obj: CMakeFiles\DonQuixote.dir\flags.make
+CMakeFiles\DonQuixote.dir\glerror_utility.cpp.obj: ..\glerror_utility.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="E:\programming\school 2020\370\assignments\CS370_Assign01\CS370_Assign01\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/DonQuixote.dir/glerror_utility.cpp.obj"
+	C:\PROGRA~2\MIB055~1\2019\COMMUN~1\VC\Tools\MSVC\1426~1.288\bin\Hostx64\x64\cl.exe @<<
+ /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /FoCMakeFiles\DonQuixote.dir\glerror_utility.cpp.obj /FdCMakeFiles\DonQuixote.dir\ /FS -c "E:\programming\school 2020\370\assignments\CS370_Assign01\CS370_Assign01\glerror_utility.cpp"
+<<
+
+CMakeFiles\DonQuixote.dir\glerror_utility.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/DonQuixote.dir/glerror_utility.cpp.i"
+	C:\PROGRA~2\MIB055~1\2019\COMMUN~1\VC\Tools\MSVC\1426~1.288\bin\Hostx64\x64\cl.exe > CMakeFiles\DonQuixote.dir\glerror_utility.cpp.i @<<
+ /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "E:\programming\school 2020\370\assignments\CS370_Assign01\CS370_Assign01\glerror_utility.cpp"
+<<
+
+CMakeFiles\DonQuixote.dir\glerror_utility.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/DonQuixote.dir/glerror_utility.cpp.s"
+	C:\PROGRA~2\MIB055~1\2019\COMMUN~1\VC\Tools\MSVC\1426~1.288\bin\Hostx64\x64\cl.exe @<<
+ /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /FoNUL /FAs /FaCMakeFiles\DonQuixote.dir\glerror_utility.cpp.s /c "E:\programming\school 2020\370\assignments\CS370_Assign01\CS370_Assign01\glerror_utility.cpp"
+<<
+
 # Object files for target DonQuixote
 DonQuixote_OBJECTS = \
 "CMakeFiles\DonQuixote.dir\DonQuixote.cpp.obj" \
-"CMakeFiles\DonQuixote.dir\utils.cpp.obj"
+"CMakeFiles\DonQuixote.dir\utils.cpp.obj" \
+"CMakeFiles\DonQuixote.dir\glerror_utility.cpp.obj"
 
 # External object files for target DonQuixote
 DonQuixote_EXTERNAL_OBJECTS =
 
 ..\bin\DonQuixote.exe: CMakeFiles\DonQuixote.dir\DonQuixote.cpp.obj
 ..\bin\DonQuixote.exe: CMakeFiles\DonQuixote.dir\utils.cpp.obj
+..\bin\DonQuixote.exe: CMakeFiles\DonQuixote.dir\glerror_utility.cpp.obj
 ..\bin\DonQuixote.exe: CMakeFiles\DonQuixote.dir\build.make
 ..\bin\DonQuixote.exe: CMakeFiles\DonQuixote.dir\objects1.rsp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir="E:\programming\school 2020\370\assignments\CS370_Assign01\CS370_Assign01\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX executable ..\bin\DonQuixote.exe"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir="E:\programming\school 2020\370\assignments\CS370_Assign01\CS370_Assign01\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX executable ..\bin\DonQuixote.exe"
 	"C:\Program Files\JetBrains\CLion 2020.2\bin\cmake\win\bin\cmake.exe" -E vs_link_exe --intdir=CMakeFiles\DonQuixote.dir --rc=C:\PROGRA~2\WI3CF2~1\10\bin\100183~1.0\x64\rc.exe --mt=C:\PROGRA~2\WI3CF2~1\10\bin\100183~1.0\x64\mt.exe --manifests  -- C:\PROGRA~2\MIB055~1\2019\COMMUN~1\VC\Tools\MSVC\1426~1.288\bin\Hostx64\x64\link.exe /nologo @CMakeFiles\DonQuixote.dir\objects1.rsp @<<
  /out:..\bin\DonQuixote.exe /implib:DonQuixote.lib /pdb:"E:\programming\school 2020\370\assignments\CS370_Assign01\CS370_Assign01\bin\DonQuixote.pdb" /version:0.0  /machine:x64 /debug /INCREMENTAL /subsystem:console   -LIBPATH:"E:\programming\school 2020\370\assignments\CS370_Assign01\CS370_Assign01\lib\Win"  opengl32.lib glfw3.lib glew32.lib kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib 
 <<

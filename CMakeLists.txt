@@ -1,16 +1,11 @@
 cmake_minimum_required(VERSION 3.16)   # CMake version check
 project(DonQuixote)                        # Create project "DonQuixote"
-# sorry I use some stuff from c++17
 set(CMAKE_CXX_STANDARD 17)             # Enable c++17 standard
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/bin)
 
 #OpenGL
 find_package(OpenGL REQUIRED)
 include_directories(${OPENGL_INCLUDE_DIR})
-
-# glm stuff
-# ...i wanted vec2 and other nice things
-find_package(glm REQUIRED)
 
 #add include and link directories
 if(APPLE)
@@ -40,21 +35,15 @@ if(APPLE)
     target_link_libraries(DonQuixote ${OPENGL_gl_LIBRARY})
     target_link_libraries(DonQuixote glfw3)
     target_link_libraries(DonQuixote glew)
-    # Add GLM
-    target_link_libraries(DonQuixote glm)
 elseif(WIN32)
     # Add GLFW and GLEW libraries
     target_link_libraries(DonQuixote ${OPENGL_gl_LIBRARY})
     target_link_libraries(DonQuixote glfw3)
     target_link_libraries(DonQuixote glew32)
-    # Add GLM
-    target_link_libraries(DonQuixote glm)
 else()
     target_link_libraries(DonQuixote OpenGL::GL)
     target_link_libraries(DonQuixote glfw)
     target_link_libraries(DonQuixote GLEW)
-    # Add GLM
-    target_link_libraries(DonQuixote glm)
 endif()
 
 add_custom_target(MAKE_ZIP DEPENDS output)
@@ -62,3 +51,6 @@ add_custom_command(OUTPUT output
 	WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
 	COMMAND ${CMAKE_COMMAND} -E tar cfv ${CMAKE_SOURCE_DIR}/solution.zip --format=zip --files-from=${CMAKE_SOURCE_DIR}/submit.txt
 )
+
+
+

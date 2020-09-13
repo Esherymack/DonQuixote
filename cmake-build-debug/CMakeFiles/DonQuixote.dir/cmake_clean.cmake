@@ -3,6 +3,7 @@ file(REMOVE_RECURSE
   "../bin/DonQuixote.exe.manifest"
   "../bin/DonQuixote.pdb"
   "CMakeFiles/DonQuixote.dir/DonQuixote.cpp.obj"
+  "CMakeFiles/DonQuixote.dir/glerror_utility.cpp.obj"
   "CMakeFiles/DonQuixote.dir/utils.cpp.obj"
   "DonQuixote.lib"
 )

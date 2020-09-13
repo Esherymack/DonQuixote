@@ -30,9 +30,6 @@ set(CMAKE_MAKEFILE_DEPENDS
   "C:/Program Files/JetBrains/CLion 2020.2/bin/cmake/win/share/cmake-3.17/Modules/Platform/Windows.cmake"
   "C:/Program Files/JetBrains/CLion 2020.2/bin/cmake/win/share/cmake-3.17/Modules/Platform/WindowsPaths.cmake"
   "C:/Program Files/JetBrains/CLion 2020.2/bin/cmake/win/share/cmake-3.17/Modules/ProcessorCount.cmake"
-  "C:/Program Files/glm/lib/cmake/glm/glmConfig.cmake"
-  "C:/Program Files/glm/lib/cmake/glm/glmConfigVersion.cmake"
-  "C:/Program Files/glm/lib/cmake/glm/glmTargets.cmake"
   "../CMakeLists.txt"
   "CMakeFiles/3.17.3/CMakeCCompiler.cmake"
   "CMakeFiles/3.17.3/CMakeCXXCompiler.cmake"
@@ -54,4 +51,5 @@ set(CMAKE_MAKEFILE_PRODUCTS
 # Dependency information for all targets:
 set(CMAKE_DEPEND_INFO_FILES
   "CMakeFiles/DonQuixote.dir/DependInfo.cmake"
+  "CMakeFiles/MAKE_ZIP.dir/DependInfo.cmake"
   )

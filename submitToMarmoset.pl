@@ -123,7 +123,7 @@ delete $properties{'submitURL'};
 # is necessary or correct any longer.  So, we just let curl do
 # its thing without any special options.
 
-my $cmd = "curl -F 'submittedFiles=\@${fileName}'";
+my $cmd = "curl -A '' -F 'submittedFiles=\@${fileName}'";
 for my $key (sort keys %properties) {
 	my $value = $properties{$key};
 	$cmd .= " -F '$key=$value'";

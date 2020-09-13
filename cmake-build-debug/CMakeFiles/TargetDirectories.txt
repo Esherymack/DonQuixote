@@ -1,3 +1,4 @@
 E:/programming/school 2020/370/assignments/CS370_Assign01/CS370_Assign01/cmake-build-debug/CMakeFiles/rebuild_cache.dir
 E:/programming/school 2020/370/assignments/CS370_Assign01/CS370_Assign01/cmake-build-debug/CMakeFiles/DonQuixote.dir
+E:/programming/school 2020/370/assignments/CS370_Assign01/CS370_Assign01/cmake-build-debug/CMakeFiles/MAKE_ZIP.dir
 E:/programming/school 2020/370/assignments/CS370_Assign01/CS370_Assign01/cmake-build-debug/CMakeFiles/edit_cache.dir

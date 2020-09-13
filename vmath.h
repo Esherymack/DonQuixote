@@ -682,61 +682,6 @@ typedef Tmat4<int> imat4;
 typedef Tmat4<unsigned int> umat4;
 typedef Tmat4<double> dmat4;
 
-static inline mat4 frustum(float left, float right, float bottom, float top, float n, float f)
-{
-    mat4 result(mat4::identity());
-
-    if ((right == left) ||
-        (top == bottom) ||
-        (n == f) ||
-        (n < 0.0) ||
-        (f < 0.0))
-       return result;
-
-    result[0][0] = (2.0f * n) / (right - left);
-    result[1][1] = (2.0f * n) / (top - bottom);
-
-    result[2][0] = (right + left) / (right - left);
-    result[2][1] = (top + bottom) / (top - bottom);
-    result[2][2] = -(f + n) / (f - n);
-    result[2][3]= -1.0f;
-
-    result[3][2] = -(2.0f * f * n) / (f - n);
-    result[3][3] =  0.0f;
-
-    return result;
-}
-
-static inline mat4 perspective(float fovy /* in degrees */, float aspect, float n, float f)
-{
-	float  top = n * (float)tan(radians(0.5f*fovy)); // bottom = -top
-	float  right = top * aspect; // left = -right
-	return frustum(-right, right, -top, top, n, f);
-}
-
-static inline mat4 ortho(float left, float right, float bottom, float top, float n, float f)
-{
-    return mat4( vec4(2.0f / (right - left), 0.0f, 0.0f, 0.0f),
-                 vec4(0.0f, 2.0f / (top - bottom), 0.0f, 0.0f),
-                 vec4(0.0f, 0.0f, 2.0f / (n - f), 0.0f),
-                 vec4((left + right) / (left - right), (bottom + top) / (bottom - top), (n + f) / (f - n), 1.0f) );
-}
-
-template <typename T>
-static inline Tmat4<T> lookat(vecN<T,3> eye, vecN<T,3> center, vecN<T,3> up)
-{
-    const Tvec3<T> f = normalize(center - eye);
-    const Tvec3<T> upN = normalize(up);
-    const Tvec3<T> s = normalize(cross(f, upN));
-    const Tvec3<T> u = normalize(cross(s, f));
-    const Tmat4<T> M = Tmat4<T>(Tvec4<T>(s[0], u[0], -f[0], T(0)),
-                                Tvec4<T>(s[1], u[1], -f[1], T(0)),
-                                Tvec4<T>(s[2], u[2], -f[2], T(0)),
-                                Tvec4<T>(T(0), T(0), T(0), T(1)));
-
-    return M * translate<T>(-eye);
-}
-
 template <typename T>
 static inline Tmat4<T> translate(T x, T y, T z)
 {
@@ -801,6 +746,61 @@ template <typename T>
 static inline Tmat4<T> rotate(T angle, const vecN<T,3>& v)
 {
     return rotate<T>(angle, v[0], v[1], v[2]);
+}
+
+static inline mat4 frustum(float left, float right, float bottom, float top, float n, float f)
+{
+    mat4 result(mat4::identity());
+
+    if ((right == left) ||
+        (top == bottom) ||
+        (n == f) ||
+        (n < 0.0) ||
+        (f < 0.0))
+       return result;
+
+    result[0][0] = (2.0f * n) / (right - left);
+    result[1][1] = (2.0f * n) / (top - bottom);
+
+    result[2][0] = (right + left) / (right - left);
+    result[2][1] = (top + bottom) / (top - bottom);
+    result[2][2] = -(f + n) / (f - n);
+    result[2][3]= -1.0f;
+
+    result[3][2] = -(2.0f * f * n) / (f - n);
+    result[3][3] =  0.0f;
+
+    return result;
+}
+
+static inline mat4 perspective(float fovy /* in degrees */, float aspect, float n, float f)
+{
+	float  top = n * (float)tan(radians(0.5f*fovy)); // bottom = -top
+	float  right = top * aspect; // left = -right
+	return frustum(-right, right, -top, top, n, f);
+}
+
+static inline mat4 ortho(float left, float right, float bottom, float top, float n, float f)
+{
+    return mat4( vec4(2.0f / (right - left), 0.0f, 0.0f, 0.0f),
+                 vec4(0.0f, 2.0f / (top - bottom), 0.0f, 0.0f),
+                 vec4(0.0f, 0.0f, 2.0f / (n - f), 0.0f),
+                 vec4((left + right) / (left - right), (bottom + top) / (bottom - top), (n + f) / (f - n), 1.0f) );
+}
+
+template <typename T>
+static inline Tmat4<T> lookat(vecN<T,3> eye, vecN<T,3> center, vecN<T,3> up)
+{
+    const Tvec3<T> f = normalize(center - eye);
+    const Tvec3<T> upN = normalize(up);
+    const Tvec3<T> s = normalize(cross(f, upN));
+    const Tvec3<T> u = normalize(cross(s, f));
+    const Tmat4<T> M = Tmat4<T>(Tvec4<T>(s[0], u[0], -f[0], T(0)),
+                                Tvec4<T>(s[1], u[1], -f[1], T(0)),
+                                Tvec4<T>(s[2], u[2], -f[2], T(0)),
+                                Tvec4<T>(T(0), T(0), T(0), T(1)));
+
+    return M * translate<T>(-eye);
 }
 
 #ifdef min
