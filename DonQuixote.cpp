@@ -28,6 +28,7 @@ GLuint program;
 GLuint vPos;
 GLuint vCol;
 GLuint model_mat_loc;
+
 const char *vertex_shader = "../trans.vert";
 const char *frag_shader = "../trans.frag";
 
@@ -70,6 +71,11 @@ void drawSun(GLfloat x_origin, GLfloat y_origin, GLfloat radius, GLint numSides)
                     {1.0f, 1.0f, 1.0f, 1.0f},
                     {1.0f, 0.97f, 0.46f, 1.0f}
             };
+
+
+    // Bind sun vertex and color buffers
+    glBindBuffer(GL_ARRAY_BUFFER, Buffers[SunPosBuffer]);
+    glBufferData(GL_ARRAY_BUFFER, sunIndices.size(), sunIndices.data(), GL_STATIC_DRAW);
 
     glBindBuffer(GL_ARRAY_BUFFER, Buffers[SunColBuffer]);
     glBufferData(GL_ARRAY_BUFFER, sizeof(yellowGradient), yellowGradient, GL_STATIC_DRAW);
@@ -190,12 +196,18 @@ void render_scene( )
     thigle(EXC_MSG("Drawing fan failed!"));
 
     // Draw sun (using triangle fan)
+    glBindVertexArray(VAOs[Sun]);
+    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, Buffers[SunIndexBuffer]);
+    glBindBuffer(GL_ARRAY_BUFFER, Buffers[SunPosBuffer]);
+    glVertexAttribPointer(vPos, posCoords, GL_FLOAT, GL_FALSE, 0, nullptr);
+    glEnableVertexAttribArray(vPos);
     glBindBuffer(GL_ARRAY_BUFFER, Buffers[SunColBuffer]);
     glVertexAttribPointer(vCol, colCoords, GL_FLOAT, GL_FALSE, 0, nullptr);
     glEnableVertexAttribArray(vCol);
 
-    model_matrix = vmath::mat4::identity();
+/*    model_matrix = vmath::mat4::identity();
     glUniformMatrix4fv(model_mat_loc, 1, GL_FALSE, model_matrix);
+*/
     glDrawElements(GL_TRIANGLE_FAN, numSunIndices, GL_UNSIGNED_SHORT, nullptr);
     thigle(EXC_MSG("You can't draw a circle to save your life"));
 
@@ -293,11 +305,7 @@ void build_geometry( )
     glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
     thigle(EXC_MSG("Binding square index buffers failed!"));
 
-    // Bind sun vertex and color buffers
-    glBindBuffer(GL_ARRAY_BUFFER, Buffers[SunPosBuffer]);
-    glBufferData(GL_ARRAY_BUFFER, sizeof(sqVertices), sqVertices, GL_STATIC_DRAW);
-
-    drawSun(0, 0, 1, 10);
+    drawSun(0.0f, 0.0f, 1.0f, 10);
 
 }
 
