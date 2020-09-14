@@ -8,28 +8,28 @@
 		<Option virtualFolders="CMake Files\;"/>
 		<Build>
 			<Target title="all">
-				<Option working_dir="C:/Users/esher/Documents/programming/school/370/assignments/DonQuixote/cmake-build-debug"/>
+				<Option working_dir="E:/programming/school 2020/370/assignments/CS370_Assign01/CS370_Assign01/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="nmake /NOLOGO /f C:\Users\esher\Documents\programming\school\370\assignments\DonQuixote\cmake-build-debug\Makefile VERBOSE=1 all"/>
-					<CompileFile command="nmake /NOLOGO /f C:\Users\esher\Documents\programming\school\370\assignments\DonQuixote\cmake-build-debug\Makefile VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="nmake /NOLOGO /f C:\Users\esher\Documents\programming\school\370\assignments\DonQuixote\cmake-build-debug\Makefile VERBOSE=1 clean"/>
-					<DistClean command="nmake /NOLOGO /f C:\Users\esher\Documents\programming\school\370\assignments\DonQuixote\cmake-build-debug\Makefile VERBOSE=1 clean"/>
+					<Build command="nmake /NOLOGO /f &quot;E:\programming\school 2020\370\assignments\CS370_Assign01\CS370_Assign01\cmake-build-debug\Makefile&quot; VERBOSE=1 all"/>
+					<CompileFile command="nmake /NOLOGO /f &quot;E:\programming\school 2020\370\assignments\CS370_Assign01\CS370_Assign01\cmake-build-debug\Makefile&quot; VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="nmake /NOLOGO /f &quot;E:\programming\school 2020\370\assignments\CS370_Assign01\CS370_Assign01\cmake-build-debug\Makefile&quot; VERBOSE=1 clean"/>
+					<DistClean command="nmake /NOLOGO /f &quot;E:\programming\school 2020\370\assignments\CS370_Assign01\CS370_Assign01\cmake-build-debug\Makefile&quot; VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="rebuild_cache">
-				<Option working_dir="C:/Users/esher/Documents/programming/school/370/assignments/DonQuixote/cmake-build-debug"/>
+				<Option working_dir="E:/programming/school 2020/370/assignments/CS370_Assign01/CS370_Assign01/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="nmake /NOLOGO /f C:\Users\esher\Documents\programming\school\370\assignments\DonQuixote\cmake-build-debug\Makefile VERBOSE=1 rebuild_cache"/>
-					<CompileFile command="nmake /NOLOGO /f C:\Users\esher\Documents\programming\school\370\assignments\DonQuixote\cmake-build-debug\Makefile VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="nmake /NOLOGO /f C:\Users\esher\Documents\programming\school\370\assignments\DonQuixote\cmake-build-debug\Makefile VERBOSE=1 clean"/>
-					<DistClean command="nmake /NOLOGO /f C:\Users\esher\Documents\programming\school\370\assignments\DonQuixote\cmake-build-debug\Makefile VERBOSE=1 clean"/>
+					<Build command="nmake /NOLOGO /f &quot;E:\programming\school 2020\370\assignments\CS370_Assign01\CS370_Assign01\cmake-build-debug\Makefile&quot; VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="nmake /NOLOGO /f &quot;E:\programming\school 2020\370\assignments\CS370_Assign01\CS370_Assign01\cmake-build-debug\Makefile&quot; VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="nmake /NOLOGO /f &quot;E:\programming\school 2020\370\assignments\CS370_Assign01\CS370_Assign01\cmake-build-debug\Makefile&quot; VERBOSE=1 clean"/>
+					<DistClean command="nmake /NOLOGO /f &quot;E:\programming\school 2020\370\assignments\CS370_Assign01\CS370_Assign01\cmake-build-debug\Makefile&quot; VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="DonQuixote">
-				<Option output="C:/Users/esher/Documents/programming/school/370/assignments/DonQuixote/bin/DonQuixote.exe" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="C:/Users/esher/Documents/programming/school/370/assignments/DonQuixote/bin"/>
+				<Option output="E:/programming/school 2020/370/assignments/CS370_Assign01/CS370_Assign01/bin/DonQuixote.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="E:/programming/school 2020/370/assignments/CS370_Assign01/CS370_Assign01/bin"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="msvc8"/>
@@ -44,15 +44,15 @@
 					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\cppwinrt"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="nmake /NOLOGO /f C:\Users\esher\Documents\programming\school\370\assignments\DonQuixote\cmake-build-debug\Makefile VERBOSE=1 DonQuixote"/>
-					<CompileFile command="nmake /NOLOGO /f C:\Users\esher\Documents\programming\school\370\assignments\DonQuixote\cmake-build-debug\Makefile VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="nmake /NOLOGO /f C:\Users\esher\Documents\programming\school\370\assignments\DonQuixote\cmake-build-debug\Makefile VERBOSE=1 clean"/>
-					<DistClean command="nmake /NOLOGO /f C:\Users\esher\Documents\programming\school\370\assignments\DonQuixote\cmake-build-debug\Makefile VERBOSE=1 clean"/>
+					<Build command="nmake /NOLOGO /f &quot;E:\programming\school 2020\370\assignments\CS370_Assign01\CS370_Assign01\cmake-build-debug\Makefile&quot; VERBOSE=1 DonQuixote"/>
+					<CompileFile command="nmake /NOLOGO /f &quot;E:\programming\school 2020\370\assignments\CS370_Assign01\CS370_Assign01\cmake-build-debug\Makefile&quot; VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="nmake /NOLOGO /f &quot;E:\programming\school 2020\370\assignments\CS370_Assign01\CS370_Assign01\cmake-build-debug\Makefile&quot; VERBOSE=1 clean"/>
+					<DistClean command="nmake /NOLOGO /f &quot;E:\programming\school 2020\370\assignments\CS370_Assign01\CS370_Assign01\cmake-build-debug\Makefile&quot; VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="DonQuixote/fast">
-				<Option output="C:/Users/esher/Documents/programming/school/370/assignments/DonQuixote/bin/DonQuixote.exe" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="C:/Users/esher/Documents/programming/school/370/assignments/DonQuixote/bin"/>
+				<Option output="E:/programming/school 2020/370/assignments/CS370_Assign01/CS370_Assign01/bin/DonQuixote.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="E:/programming/school 2020/370/assignments/CS370_Assign01/CS370_Assign01/bin"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="msvc8"/>
@@ -67,49 +67,49 @@
 					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\cppwinrt"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="nmake /NOLOGO /f C:\Users\esher\Documents\programming\school\370\assignments\DonQuixote\cmake-build-debug\Makefile VERBOSE=1 DonQuixote/fast"/>
-					<CompileFile command="nmake /NOLOGO /f C:\Users\esher\Documents\programming\school\370\assignments\DonQuixote\cmake-build-debug\Makefile VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="nmake /NOLOGO /f C:\Users\esher\Documents\programming\school\370\assignments\DonQuixote\cmake-build-debug\Makefile VERBOSE=1 clean"/>
-					<DistClean command="nmake /NOLOGO /f C:\Users\esher\Documents\programming\school\370\assignments\DonQuixote\cmake-build-debug\Makefile VERBOSE=1 clean"/>
+					<Build command="nmake /NOLOGO /f &quot;E:\programming\school 2020\370\assignments\CS370_Assign01\CS370_Assign01\cmake-build-debug\Makefile&quot; VERBOSE=1 DonQuixote/fast"/>
+					<CompileFile command="nmake /NOLOGO /f &quot;E:\programming\school 2020\370\assignments\CS370_Assign01\CS370_Assign01\cmake-build-debug\Makefile&quot; VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="nmake /NOLOGO /f &quot;E:\programming\school 2020\370\assignments\CS370_Assign01\CS370_Assign01\cmake-build-debug\Makefile&quot; VERBOSE=1 clean"/>
+					<DistClean command="nmake /NOLOGO /f &quot;E:\programming\school 2020\370\assignments\CS370_Assign01\CS370_Assign01\cmake-build-debug\Makefile&quot; VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="MAKE_ZIP">
-				<Option working_dir="C:/Users/esher/Documents/programming/school/370/assignments/DonQuixote/cmake-build-debug"/>
+				<Option working_dir="E:/programming/school 2020/370/assignments/CS370_Assign01/CS370_Assign01/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="nmake /NOLOGO /f C:\Users\esher\Documents\programming\school\370\assignments\DonQuixote\cmake-build-debug\Makefile VERBOSE=1 MAKE_ZIP"/>
-					<CompileFile command="nmake /NOLOGO /f C:\Users\esher\Documents\programming\school\370\assignments\DonQuixote\cmake-build-debug\Makefile VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="nmake /NOLOGO /f C:\Users\esher\Documents\programming\school\370\assignments\DonQuixote\cmake-build-debug\Makefile VERBOSE=1 clean"/>
-					<DistClean command="nmake /NOLOGO /f C:\Users\esher\Documents\programming\school\370\assignments\DonQuixote\cmake-build-debug\Makefile VERBOSE=1 clean"/>
+					<Build command="nmake /NOLOGO /f &quot;E:\programming\school 2020\370\assignments\CS370_Assign01\CS370_Assign01\cmake-build-debug\Makefile&quot; VERBOSE=1 MAKE_ZIP"/>
+					<CompileFile command="nmake /NOLOGO /f &quot;E:\programming\school 2020\370\assignments\CS370_Assign01\CS370_Assign01\cmake-build-debug\Makefile&quot; VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="nmake /NOLOGO /f &quot;E:\programming\school 2020\370\assignments\CS370_Assign01\CS370_Assign01\cmake-build-debug\Makefile&quot; VERBOSE=1 clean"/>
+					<DistClean command="nmake /NOLOGO /f &quot;E:\programming\school 2020\370\assignments\CS370_Assign01\CS370_Assign01\cmake-build-debug\Makefile&quot; VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="edit_cache">
-				<Option working_dir="C:/Users/esher/Documents/programming/school/370/assignments/DonQuixote/cmake-build-debug"/>
+				<Option working_dir="E:/programming/school 2020/370/assignments/CS370_Assign01/CS370_Assign01/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="nmake /NOLOGO /f C:\Users\esher\Documents\programming\school\370\assignments\DonQuixote\cmake-build-debug\Makefile VERBOSE=1 edit_cache"/>
-					<CompileFile command="nmake /NOLOGO /f C:\Users\esher\Documents\programming\school\370\assignments\DonQuixote\cmake-build-debug\Makefile VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="nmake /NOLOGO /f C:\Users\esher\Documents\programming\school\370\assignments\DonQuixote\cmake-build-debug\Makefile VERBOSE=1 clean"/>
-					<DistClean command="nmake /NOLOGO /f C:\Users\esher\Documents\programming\school\370\assignments\DonQuixote\cmake-build-debug\Makefile VERBOSE=1 clean"/>
+					<Build command="nmake /NOLOGO /f &quot;E:\programming\school 2020\370\assignments\CS370_Assign01\CS370_Assign01\cmake-build-debug\Makefile&quot; VERBOSE=1 edit_cache"/>
+					<CompileFile command="nmake /NOLOGO /f &quot;E:\programming\school 2020\370\assignments\CS370_Assign01\CS370_Assign01\cmake-build-debug\Makefile&quot; VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="nmake /NOLOGO /f &quot;E:\programming\school 2020\370\assignments\CS370_Assign01\CS370_Assign01\cmake-build-debug\Makefile&quot; VERBOSE=1 clean"/>
+					<DistClean command="nmake /NOLOGO /f &quot;E:\programming\school 2020\370\assignments\CS370_Assign01\CS370_Assign01\cmake-build-debug\Makefile&quot; VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="C:/Users/esher/Documents/programming/school/370/assignments/DonQuixote/DonQuixote.cpp">
+		<Unit filename="E:/programming/school 2020/370/assignments/CS370_Assign01/CS370_Assign01/DonQuixote.cpp">
 			<Option target="DonQuixote"/>
 		</Unit>
-		<Unit filename="C:/Users/esher/Documents/programming/school/370/assignments/DonQuixote/glerror_utility.cpp">
+		<Unit filename="E:/programming/school 2020/370/assignments/CS370_Assign01/CS370_Assign01/glerror_utility.cpp">
 			<Option target="DonQuixote"/>
 		</Unit>
-		<Unit filename="C:/Users/esher/Documents/programming/school/370/assignments/DonQuixote/glerror_utility.h">
+		<Unit filename="E:/programming/school 2020/370/assignments/CS370_Assign01/CS370_Assign01/glerror_utility.h">
 			<Option target="DonQuixote"/>
 		</Unit>
-		<Unit filename="C:/Users/esher/Documents/programming/school/370/assignments/DonQuixote/utils.cpp">
+		<Unit filename="E:/programming/school 2020/370/assignments/CS370_Assign01/CS370_Assign01/utils.cpp">
 			<Option target="DonQuixote"/>
 		</Unit>
-		<Unit filename="C:/Users/esher/Documents/programming/school/370/assignments/DonQuixote/utils.h">
+		<Unit filename="E:/programming/school 2020/370/assignments/CS370_Assign01/CS370_Assign01/utils.h">
 			<Option target="DonQuixote"/>
 		</Unit>
-		<Unit filename="C:/Users/esher/Documents/programming/school/370/assignments/DonQuixote/CMakeLists.txt">
+		<Unit filename="E:/programming/school 2020/370/assignments/CS370_Assign01/CS370_Assign01/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>
 	</Project>

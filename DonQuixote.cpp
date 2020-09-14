@@ -8,9 +8,11 @@
 
 #include "glerror_utility.h"
 #include <vector>
+#include <algorithm>
+#include <numeric>
 
 enum VAO_IDs {Square, Sun, NumVAOs};
-enum Buffer_IDs {SqPosBuffer, SqSkyColBuffer, SqGrassColBuffer, SqHouseColBuffer, TriRoofColBuffer, SqIndexBuffer, SunPosBuffer, SunColBuffer, NumBuffers};
+enum Buffer_IDs {SqPosBuffer, SqSkyColBuffer, SqGrassColBuffer, SqHouseColBuffer, TriRoofColBuffer, SqIndexBuffer, SunPosBuffer, SunColBuffer, SunIndexBuffer, NumBuffers};
 
 GLuint VAOs[NumVAOs];
 GLuint Buffers[NumBuffers];
@@ -19,6 +21,7 @@ GLint posCoords = 2;
 GLint colCoords = 4;
 GLint numSqIndices = 6;
 GLint numTriIndices = 3;
+GLint numSunIndices = 0;
 
 // Shader variables
 GLuint program;
@@ -28,7 +31,7 @@ GLuint model_mat_loc;
 const char *vertex_shader = "../trans.vert";
 const char *frag_shader = "../trans.frag";
 
-void drawCircle(GLfloat x, GLfloat y, GLfloat z, GLfloat radius, GLint numSides)
+void drawSun(GLfloat x, GLfloat y, GLfloat z, GLfloat radius, GLint numSides)
 {
     int numVerts = numSides + 2;
 
@@ -53,15 +56,31 @@ void drawCircle(GLfloat x, GLfloat y, GLfloat z, GLfloat radius, GLint numSides)
     std::vector<GLfloat> allVerts;
     for(int i = 0; i < numVerts; i++)
     {
-        allVerts[i * 3] = vertX[i];
-        allVerts[(i * 3) + 1] = vertY[i];
-        allVerts[(i * 3) + 2] = vertZ[i];
+        allVerts.push_back(vertX[i]);
+        allVerts.push_back(vertY[i]);
+        allVerts.push_back(vertZ[i]);
     }
 
-    glEnableClientState(GL_VERTEX_ARRAY);
-    glVertexPointer(3, GL_FLOAT, 0, allVerts);
-    glDrawArrays(GL_TRIANGLE_FAN, 0, numVerts);
-    glDisableClientState(GL_VERTEX_ARRAY);
+    // Create sun
+    glBindVertexArray(VAOs[Sun]);
+    // Define sun vertices and colors
+
+    std::vector<GLint> sunIndices(numVerts);
+    std::iota(sunIndices.begin(), sunIndices.end(), 0);
+
+    // White to #ffe675
+    GLfloat yellowGradient[][4] =
+            {
+                    {1.0f, 1.0f, 1.0f, 1.0f},
+                    {1.0f, 0.97f, 0.46f, 1.0f}
+            };
+
+    glBindBuffer(GL_ARRAY_BUFFER, Buffers[SunColBuffer]);
+    glBufferData(GL_ARRAY_BUFFER, sizeof(yellowGradient), yellowGradient, GL_STATIC_DRAW);
+
+    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, Buffers[SunIndexBuffer]);
+    glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(sunIndices), sunIndices.data(), GL_STATIC_DRAW);
+    numSunIndices = sizeof(sunIndices);
 }
 
 void render_scene( )
@@ -175,7 +194,14 @@ void render_scene( )
     thigle(EXC_MSG("Drawing fan failed!"));
 
     // Draw sun (using triangle fan)
-    drawCircle(100, 100, 0, 100, 10);
+    glBindBuffer(GL_ARRAY_BUFFER, Buffers[SunColBuffer]);
+    glVertexAttribPointer(vCol, colCoords, GL_FLOAT, GL_FALSE, 0, nullptr);
+    glEnableVertexAttribArray(vCol);
+
+    // model_matrix = vmath::mat4::identity();
+    glUniformMatrix4fv(model_mat_loc, 1, GL_FALSE, model_matrix);
+    glDrawElements(GL_TRIANGLE_FAN, numSunIndices, GL_UNSIGNED_SHORT, nullptr);
+    thigle(EXC_MSG("You can't draw a circle to save your life"));
 
 }
 
@@ -271,23 +297,11 @@ void build_geometry( )
     glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
     thigle(EXC_MSG("Binding square index buffers failed!"));
 
-    // Create sun
-    glBindVertexArray(VAOs[Sun]);
-    // Define sun vertices and colors
-
-    // White to #ffe675
-    GLfloat yellowGradient[][4] =
-            {
-                    {1.0f, 1.0f, 1.0f, 1.0f},
-                    {1.0f, 0.97f, 0.46f, 1.0f}
-            };
-
     // Bind sun vertex and color buffers
     glBindBuffer(GL_ARRAY_BUFFER, Buffers[SunPosBuffer]);
     glBufferData(GL_ARRAY_BUFFER, sizeof(sqVertices), sqVertices, GL_STATIC_DRAW);
 
-    glBindBuffer(GL_ARRAY_BUFFER, Buffers[SunColBuffer]);
-    glBufferData(GL_ARRAY_BUFFER, sizeof(yellowGradient), yellowGradient, GL_STATIC_DRAW);
+    drawSun(100, 100,  0, 1000, 10);
 
 }
 

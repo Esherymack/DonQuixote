@@ -47,10 +47,10 @@ RM = "C:\Program Files\JetBrains\CLion 2020.2\bin\cmake\win\bin\cmake.exe" -E rm
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = C:\Users\esher\Documents\programming\school\370\assignments\DonQuixote
+CMAKE_SOURCE_DIR = "E:\programming\school 2020\370\assignments\CS370_Assign01\CS370_Assign01"
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = C:\Users\esher\Documents\programming\school\370\assignments\DonQuixote\cmake-build-debug
+CMAKE_BINARY_DIR = "E:\programming\school 2020\370\assignments\CS370_Assign01\CS370_Assign01\cmake-build-debug"
 
 # Utility rule file for MAKE_ZIP.
 
@@ -61,10 +61,10 @@ CMakeFiles\MAKE_ZIP: output
 
 
 output:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=C:\Users\esher\Documents\programming\school\370\assignments\DonQuixote\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating output"
-	cd C:\Users\esher\Documents\programming\school\370\assignments\DonQuixote
-	echo >nul && "C:\Program Files\JetBrains\CLion 2020.2\bin\cmake\win\bin\cmake.exe" -E tar cfv C:/Users/esher/Documents/programming/school/370/assignments/DonQuixote/solution.zip --format=zip --files-from=C:/Users/esher/Documents/programming/school/370/assignments/DonQuixote/submit.txt
-	cd C:\Users\esher\Documents\programming\school\370\assignments\DonQuixote\cmake-build-debug
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir="E:\programming\school 2020\370\assignments\CS370_Assign01\CS370_Assign01\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "Generating output"
+	cd "E:\programming\school 2020\370\assignments\CS370_Assign01\CS370_Assign01"
+	echo >nul && "C:\Program Files\JetBrains\CLion 2020.2\bin\cmake\win\bin\cmake.exe" -E tar cfv "E:/programming/school 2020/370/assignments/CS370_Assign01/CS370_Assign01/solution.zip" --format=zip "--files-from=E:/programming/school 2020/370/assignments/CS370_Assign01/CS370_Assign01/submit.txt"
+	cd "E:\programming\school 2020\370\assignments\CS370_Assign01\CS370_Assign01\cmake-build-debug"
 
 MAKE_ZIP: CMakeFiles\MAKE_ZIP
 MAKE_ZIP: output
@@ -82,6 +82,6 @@ CMakeFiles\MAKE_ZIP.dir\clean:
 .PHONY : CMakeFiles\MAKE_ZIP.dir\clean
 
 CMakeFiles\MAKE_ZIP.dir\depend:
-	$(CMAKE_COMMAND) -E cmake_depends "NMake Makefiles" C:\Users\esher\Documents\programming\school\370\assignments\DonQuixote C:\Users\esher\Documents\programming\school\370\assignments\DonQuixote C:\Users\esher\Documents\programming\school\370\assignments\DonQuixote\cmake-build-debug C:\Users\esher\Documents\programming\school\370\assignments\DonQuixote\cmake-build-debug C:\Users\esher\Documents\programming\school\370\assignments\DonQuixote\cmake-build-debug\CMakeFiles\MAKE_ZIP.dir\DependInfo.cmake --color=$(COLOR)
+	$(CMAKE_COMMAND) -E cmake_depends "NMake Makefiles" "E:\programming\school 2020\370\assignments\CS370_Assign01\CS370_Assign01" "E:\programming\school 2020\370\assignments\CS370_Assign01\CS370_Assign01" "E:\programming\school 2020\370\assignments\CS370_Assign01\CS370_Assign01\cmake-build-debug" "E:\programming\school 2020\370\assignments\CS370_Assign01\CS370_Assign01\cmake-build-debug" "E:\programming\school 2020\370\assignments\CS370_Assign01\CS370_Assign01\cmake-build-debug\CMakeFiles\MAKE_ZIP.dir\DependInfo.cmake" --color=$(COLOR)
 .PHONY : CMakeFiles\MAKE_ZIP.dir\depend
 
