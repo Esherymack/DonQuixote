@@ -75,11 +75,6 @@
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" PASS_PARENT_ENVS_2="true">
-      <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
     <configuration default="true" type="GradleAppRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" PASS_PARENT_ENVS_2="true">
       <method v="2">
         <option name="com.jetbrains.cidr.cpp.gradle.execution.GradleNativeBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
@@ -99,6 +94,8 @@
       <option name="presentableId" value="Default" />
       <updated>1599754138629</updated>
       <workItem from="1599754140132" duration="19979000" />
+      <workItem from="1600050263603" duration="4020000" />
+      <workItem from="1600101723306" duration="3041000" />
     </task>
     <servers />
   </component>
@@ -115,24 +112,29 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state width="1877" height="44" key="GridCell.Tab.0.bottom" timestamp="1600045854993">
+    <state width="1877" height="97" key="GridCell.Tab.0.bottom" timestamp="1600058440409">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state width="1877" height="44" key="GridCell.Tab.0.bottom/0.0.1920.1080/-1920.0.1920.1080@0.0.1920.1080" timestamp="1600045854993" />
-    <state width="1877" height="44" key="GridCell.Tab.0.center" timestamp="1600045854993">
+    <state width="1877" height="97" key="GridCell.Tab.0.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1600058440409" />
+    <state width="1877" height="97" key="GridCell.Tab.0.center" timestamp="1600058440409">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state width="1877" height="44" key="GridCell.Tab.0.center/0.0.1920.1080/-1920.0.1920.1080@0.0.1920.1080" timestamp="1600045854993" />
-    <state width="1877" height="44" key="GridCell.Tab.0.left" timestamp="1600045854993">
+    <state width="1877" height="97" key="GridCell.Tab.0.center/0.0.1920.1080@0.0.1920.1080" timestamp="1600058440409" />
+    <state width="1877" height="97" key="GridCell.Tab.0.left" timestamp="1600058440408">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state width="1877" height="44" key="GridCell.Tab.0.left/0.0.1920.1080/-1920.0.1920.1080@0.0.1920.1080" timestamp="1600045854993" />
-    <state width="1877" height="44" key="GridCell.Tab.0.right" timestamp="1600045854993">
+    <state width="1877" height="97" key="GridCell.Tab.0.left/0.0.1920.1080@0.0.1920.1080" timestamp="1600058440408" />
+    <state width="1877" height="97" key="GridCell.Tab.0.right" timestamp="1600058440409">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state width="1877" height="44" key="GridCell.Tab.0.right/0.0.1920.1080/-1920.0.1920.1080@0.0.1920.1080" timestamp="1600045854993" />
+    <state width="1877" height="97" key="GridCell.Tab.0.right/0.0.1920.1080@0.0.1920.1080" timestamp="1600058440409" />
     <state width="1877" height="125" key="GridCell.Tab.1.bottom" timestamp="1600043357124">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
@@ -153,5 +155,9 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="563" y="150" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1920.1080/-1920.0.1920.1080@0.0.1920.1080" timestamp="1600041970184" />
+    <state x="616" y="250" key="run.anything.popup" timestamp="1600102327808">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="616" y="250" key="run.anything.popup/0.0.1920.1080@0.0.1920.1080" timestamp="1600102327808" />
   </component>
 </project>

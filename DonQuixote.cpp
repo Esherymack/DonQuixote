@@ -7,6 +7,7 @@
 #include "vmath.h"
 
 #include "glerror_utility.h"
+#include <vector>
 
 enum VAO_IDs {Square, Sun, NumVAOs};
 enum Buffer_IDs {SqPosBuffer, SqSkyColBuffer, SqGrassColBuffer, SqHouseColBuffer, TriRoofColBuffer, SqIndexBuffer, SunPosBuffer, SunColBuffer, NumBuffers};
@@ -27,20 +28,40 @@ GLuint model_mat_loc;
 const char *vertex_shader = "../trans.vert";
 const char *frag_shader = "../trans.frag";
 
-void drawCircle(int triangleCount, GLfloat x, GLfloat y, GLfloat radius)
+void drawCircle(GLfloat x, GLfloat y, GLfloat z, GLfloat radius, GLint numSides)
 {
-    GLfloat twicePi = 2.0f * 3.141592;
+    int numVerts = numSides + 2;
 
-    glBegin(GL_TRIANGLE_FAN);
-    glVertex2f(x, y);
-    for(int i = 0; i < triangleCount; i++)
+    GLfloat twicePi = 2.0f * M_PI;
+
+    std::vector<GLfloat> vertX;
+    std::vector<GLfloat> vertY;
+    std::vector<GLfloat> vertZ;
+
+    vertX.push_back(x);
+    vertY.push_back(y);
+    vertZ.push_back(z);
+
+    for(int i = 1; i < numVerts; i++)
     {
-        glVertex2f(
-                x + (radius * cos(i * twicePi / triangleCount)),
-                y + (radius * sin(i * twicePi / triangleCount))
-        );
+        vertX.push_back(x + (radius * cos(i * twicePi / numSides)));
+        vertY.push_back(y + (radius * sin(i * twicePi / numSides)));
+        vertZ.push_back(z);
     }
-    glEnd();
+
+//    GLfloat allVerts[(numVerts) * 3];
+    std::vector<GLfloat> allVerts;
+    for(int i = 0; i < numVerts; i++)
+    {
+        allVerts[i * 3] = vertX[i];
+        allVerts[(i * 3) + 1] = vertY[i];
+        allVerts[(i * 3) + 2] = vertZ[i];
+    }
+
+    glEnableClientState(GL_VERTEX_ARRAY);
+    glVertexPointer(3, GL_FLOAT, 0, allVerts);
+    glDrawArrays(GL_TRIANGLE_FAN, 0, numVerts);
+    glDisableClientState(GL_VERTEX_ARRAY);
 }
 
 void render_scene( )
@@ -105,7 +126,7 @@ void render_scene( )
 
     vmath::vec3 axis = { 0.0f, 0.0f, 1.0f };
 
-    scale_matrix = vmath::scale(0.18f, 0.18f, 1.0f);
+    scale_matrix = vmath::scale(0.25f, 0.25f, 1.0f);
     trans_matrix = vmath::translate(0.0f, -0.74f, 0.0f);
     rot_matrix = vmath::rotate(-45.0f, axis);
     model_matrix = scale_matrix * trans_matrix * rot_matrix;
@@ -116,25 +137,46 @@ void render_scene( )
     thigle(EXC_MSG("Drawing roof failed!"));
 
     // Draw fan (using first three square vertices)
-    glBindBuffer(GL_ARRAY_BUFFER, Buffers[SqGrassColBuffer]);
+    glBindBuffer(GL_ARRAY_BUFFER, Buffers[SqSkyColBuffer]);
     glVertexAttribPointer(vCol, colCoords, GL_FLOAT, GL_FALSE, 0, nullptr);
     glEnableVertexAttribArray(vCol);
 
     // Set transformation matrix for first blade
     model_matrix = vmath::mat4::identity();
-
+    scale_matrix = vmath::scale(0.1f, 0.3f, 1.0f);
+    rot_matrix = vmath::rotate(-33.0f, axis);
+    trans_matrix = vmath::translate(0.24f, 0.35f, 0.0f);
     
-
+    model_matrix = trans_matrix * rot_matrix * scale_matrix;
     glUniformMatrix4fv(model_mat_loc, 1, GL_FALSE, model_matrix);
     glDrawElements(GL_TRIANGLES, numTriIndices, GL_UNSIGNED_SHORT, nullptr);
     thigle(EXC_MSG("Drawing fan failed!"));
 
     // Set transformation matrix for second blade
+    model_matrix = vmath::mat4::identity();
+    scale_matrix = vmath::scale(0.1f, 0.3f, 1.0f);
+    rot_matrix = vmath::rotate(50.0f, axis);
+    trans_matrix = vmath::translate(-0.16f, 0.42f, 0.0f);
+
+    model_matrix = trans_matrix * rot_matrix * scale_matrix;
+    glUniformMatrix4fv(model_mat_loc, 1, GL_FALSE, model_matrix);
+    glDrawElements(GL_TRIANGLES, numTriIndices, GL_UNSIGNED_SHORT, nullptr);
+    thigle(EXC_MSG("Drawing fan failed!"));
 
     // Set transformation matrix for third blade
+    model_matrix = vmath::mat4::identity();
+    scale_matrix = vmath::scale(0.1f, 0.3f, 1.0f);
+    rot_matrix = vmath::rotate(180.0f, axis);
+    trans_matrix = vmath::translate(-0.1f, -0.15f, 0.0f);
+
+    model_matrix = trans_matrix * rot_matrix * scale_matrix;
+    glUniformMatrix4fv(model_mat_loc, 1, GL_FALSE, model_matrix);
+    glDrawElements(GL_TRIANGLES, numTriIndices, GL_UNSIGNED_SHORT, nullptr);
+    thigle(EXC_MSG("Drawing fan failed!"));
 
     // Draw sun (using triangle fan)
-    // drawCircle(20, 0.0f, 0.0f, 1.0f);
+    drawCircle(100, 100, 0, 100, 10);
+
 }
 
 void build_geometry( )
@@ -173,13 +215,6 @@ void build_geometry( )
                     {0.0f, 0.85f, 0.38f, 1.0f},
                     {0.0f, 0.85f, 0.38f, 1.0f},
                     {0.0f, 0.85f, 0.38f, 1.0f}
-            };
-
-    // White to #ffe675
-    GLfloat yellowGradient[][4] =
-            {
-                {1.0f, 1.0f, 1.0f, 1.0f},
-                {1.0f, 0.97f, 0.46f, 1.0f}
             };
 
     // Define solid colors
@@ -240,8 +275,19 @@ void build_geometry( )
     glBindVertexArray(VAOs[Sun]);
     // Define sun vertices and colors
 
+    // White to #ffe675
+    GLfloat yellowGradient[][4] =
+            {
+                    {1.0f, 1.0f, 1.0f, 1.0f},
+                    {1.0f, 0.97f, 0.46f, 1.0f}
+            };
 
-    // TODO: Bind sun vertex and color buffers
+    // Bind sun vertex and color buffers
+    glBindBuffer(GL_ARRAY_BUFFER, Buffers[SunPosBuffer]);
+    glBufferData(GL_ARRAY_BUFFER, sizeof(sqVertices), sqVertices, GL_STATIC_DRAW);
+
+    glBindBuffer(GL_ARRAY_BUFFER, Buffers[SunColBuffer]);
+    glBufferData(GL_ARRAY_BUFFER, sizeof(yellowGradient), yellowGradient, GL_STATIC_DRAW);
 
 }
 

@@ -1,4 +1,19 @@
-"C:\Program Files\JetBrains\CLion 2020.2\bin\cmake\win\bin\cmake.exe" -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - NMake Makefiles" "E:\programming\school 2020\370\assignments\CS370_Assign01\CS370_Assign01"
+"C:\Program Files\JetBrains\CLion 2020.2\bin\cmake\win\bin\cmake.exe" -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - NMake Makefiles" C:\Users\esher\Documents\programming\school\370\assignments\DonQuixote
+-- The C compiler identification is MSVC 19.26.28806.0
+-- The CXX compiler identification is MSVC 19.26.28806.0
+-- Check for working C compiler: C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.26.28801/bin/Hostx64/x64/cl.exe
+-- Check for working C compiler: C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.26.28801/bin/Hostx64/x64/cl.exe - works
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Check for working CXX compiler: C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.26.28801/bin/Hostx64/x64/cl.exe
+-- Check for working CXX compiler: C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.26.28801/bin/Hostx64/x64/cl.exe - works
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Found OpenGL: opengl32   
 -- Configuring done
 -- Generating done
--- Build files have been written to: E:/programming/school 2020/370/assignments/CS370_Assign01/CS370_Assign01/cmake-build-debug
+-- Build files have been written to: C:/Users/esher/Documents/programming/school/370/assignments/DonQuixote/cmake-build-debug

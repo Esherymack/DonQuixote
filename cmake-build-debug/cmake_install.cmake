@@ -1,4 +1,4 @@
-# Install script for directory: E:/programming/school 2020/370/assignments/CS370_Assign01/CS370_Assign01
+# Install script for directory: C:/Users/esher/Documents/programming/school/370/assignments/DonQuixote
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -40,5 +40,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "E:/programming/school 2020/370/assignments/CS370_Assign01/CS370_Assign01/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "C:/Users/esher/Documents/programming/school/370/assignments/DonQuixote/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
