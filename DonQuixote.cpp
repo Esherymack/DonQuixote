@@ -31,41 +31,37 @@ GLuint model_mat_loc;
 const char *vertex_shader = "../trans.vert";
 const char *frag_shader = "../trans.frag";
 
-void drawSun(GLfloat x, GLfloat y, GLfloat z, GLfloat radius, GLint numSides)
+void drawSun(GLfloat x_origin, GLfloat y_origin, GLfloat radius, GLint numSides)
 {
-    int numVerts = numSides + 2;
-
-    GLfloat twicePi = 2.0f * M_PI;
+    int numVerts = numSides + 1;
+    GLfloat step = 2 * M_PI / (numVerts + 1);
 
     std::vector<GLfloat> vertX;
     std::vector<GLfloat> vertY;
-    std::vector<GLfloat> vertZ;
 
-    vertX.push_back(x);
-    vertY.push_back(y);
-    vertZ.push_back(z);
+    vertX.push_back(x_origin);
+    vertY.push_back(y_origin);
 
     for(int i = 1; i < numVerts; i++)
     {
-        vertX.push_back(x + (radius * cos(i * twicePi / numSides)));
-        vertY.push_back(y + (radius * sin(i * twicePi / numSides)));
-        vertZ.push_back(z);
+        GLfloat x = x_origin + cos(step * i) * radius;
+        GLfloat y = y_origin + sin(step * i) * radius;
+        vertX.push_back(x);
+        vertY.push_back(y);
     }
 
-//    GLfloat allVerts[(numVerts) * 3];
     std::vector<GLfloat> allVerts;
     for(int i = 0; i < numVerts; i++)
     {
         allVerts.push_back(vertX[i]);
         allVerts.push_back(vertY[i]);
-        allVerts.push_back(vertZ[i]);
     }
 
     // Create sun
     glBindVertexArray(VAOs[Sun]);
-    // Define sun vertices and colors
 
-    std::vector<GLint> sunIndices(numVerts);
+    // Define sun vertices and colors
+    std::vector<GLint> sunIndices(allVerts.size()/2);
     std::iota(sunIndices.begin(), sunIndices.end(), 0);
 
     // White to #ffe675
@@ -79,8 +75,8 @@ void drawSun(GLfloat x, GLfloat y, GLfloat z, GLfloat radius, GLint numSides)
     glBufferData(GL_ARRAY_BUFFER, sizeof(yellowGradient), yellowGradient, GL_STATIC_DRAW);
 
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, Buffers[SunIndexBuffer]);
-    glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(sunIndices), sunIndices.data(), GL_STATIC_DRAW);
-    numSunIndices = sizeof(sunIndices);
+    glBufferData(GL_ELEMENT_ARRAY_BUFFER, sunIndices.size(), sunIndices.data(), GL_STATIC_DRAW);
+    numSunIndices = sunIndices.size();
 }
 
 void render_scene( )
@@ -198,7 +194,7 @@ void render_scene( )
     glVertexAttribPointer(vCol, colCoords, GL_FLOAT, GL_FALSE, 0, nullptr);
     glEnableVertexAttribArray(vCol);
 
-    // model_matrix = vmath::mat4::identity();
+    model_matrix = vmath::mat4::identity();
     glUniformMatrix4fv(model_mat_loc, 1, GL_FALSE, model_matrix);
     glDrawElements(GL_TRIANGLE_FAN, numSunIndices, GL_UNSIGNED_SHORT, nullptr);
     thigle(EXC_MSG("You can't draw a circle to save your life"));
@@ -301,7 +297,7 @@ void build_geometry( )
     glBindBuffer(GL_ARRAY_BUFFER, Buffers[SunPosBuffer]);
     glBufferData(GL_ARRAY_BUFFER, sizeof(sqVertices), sqVertices, GL_STATIC_DRAW);
 
-    drawSun(100, 100,  0, 1000, 10);
+    drawSun(0, 0, 1, 10);
 
 }
 
