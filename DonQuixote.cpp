@@ -59,33 +59,75 @@ void render_scene( )
     glBindBuffer(GL_ARRAY_BUFFER, Buffers[SqPosBuffer]);
     glVertexAttribPointer(vPos, posCoords, GL_FLOAT, GL_FALSE, 0, nullptr);
     glEnableVertexAttribArray(vPos);
+    glBindBuffer(GL_ARRAY_BUFFER, Buffers[SqSkyColBuffer]);
     glVertexAttribPointer(vCol, colCoords, GL_FLOAT, GL_FALSE, 0, nullptr);
     glEnableVertexAttribArray(vCol);
-    thigle(EXC_MSG("Drawing squares failed!"));
 
     // Draw sky
-    glBindBuffer(GL_ARRAY_BUFFER, Buffers[SqSkyColBuffer]);
+    model_matrix = vmath::mat4::identity();
+    glUniformMatrix4fv(model_mat_loc, 1, GL_FALSE, model_matrix);
     glDrawElements(GL_TRIANGLES, numSqIndices, GL_UNSIGNED_SHORT, nullptr);
     thigle(EXC_MSG("Drawing sky failed!"));
 
     // Draw Grass
     glBindBuffer(GL_ARRAY_BUFFER, Buffers[SqGrassColBuffer]);
+    glVertexAttribPointer(vCol, colCoords, GL_FLOAT, GL_FALSE, 0, nullptr);
+    glEnableVertexAttribArray(vCol);
+
+    trans_matrix = vmath::translate(0.0f, -3.0f, 0.0f);
+    scale_matrix = vmath::scale(1.0f, 0.25f, 1.0f);
+    model_matrix = scale_matrix * trans_matrix;
+
+    glUniformMatrix4fv(model_mat_loc, 1, GL_FALSE, model_matrix);
+
     glDrawElements(GL_TRIANGLES, numSqIndices, GL_UNSIGNED_SHORT, nullptr);
     thigle(EXC_MSG("Drawing grass failed!"));
 
     // Draw House
     glBindBuffer(GL_ARRAY_BUFFER, Buffers[SqHouseColBuffer]);
+    glVertexAttribPointer(vCol, colCoords, GL_FLOAT, GL_FALSE, 0, nullptr);
+    glEnableVertexAttribArray(vCol);
+
+    scale_matrix = vmath::scale(0.25f, 0.25f, 1.0f);
+    trans_matrix = vmath::translate(0.0f, -1.5f, 0.0f);
+    model_matrix = scale_matrix * trans_matrix;
+    glUniformMatrix4fv(model_mat_loc, 1, GL_FALSE, model_matrix);
+
     glDrawElements(GL_TRIANGLES, numSqIndices, GL_UNSIGNED_SHORT, nullptr);
     thigle(EXC_MSG("Drawing house failed!"));
 
     // Draw Roof (using first three square vertices)
     glBindBuffer(GL_ARRAY_BUFFER, Buffers[TriRoofColBuffer]);
+    glVertexAttribPointer(vCol, colCoords, GL_FLOAT, GL_FALSE, 0, nullptr);
+    glEnableVertexAttribArray(vCol);
+
+    model_matrix = vmath::mat4::identity();
+
+    vmath::vec3 axis = { 0.0f, 0.0f, 1.0f };
+
+    scale_matrix = vmath::scale(0.18f, 0.18f, 1.0f);
+    trans_matrix = vmath::translate(0.0f, -0.74f, 0.0f);
+    rot_matrix = vmath::rotate(-45.0f, axis);
+    model_matrix = scale_matrix * trans_matrix * rot_matrix;
+
+    glUniformMatrix4fv(model_mat_loc, 1, GL_FALSE, model_matrix);
+
     glDrawElements(GL_TRIANGLES, numTriIndices, GL_UNSIGNED_SHORT, nullptr);
     thigle(EXC_MSG("Drawing roof failed!"));
 
-    // TODO: Draw fan (using first three square vertices)
+    // Draw fan (using first three square vertices)
+    glBindBuffer(GL_ARRAY_BUFFER, Buffers[SqGrassColBuffer]);
+    glVertexAttribPointer(vCol, colCoords, GL_FLOAT, GL_FALSE, 0, nullptr);
+    glEnableVertexAttribArray(vCol);
 
     // Set transformation matrix for first blade
+    model_matrix = vmath::mat4::identity();
+
+    
+
+    glUniformMatrix4fv(model_mat_loc, 1, GL_FALSE, model_matrix);
+    glDrawElements(GL_TRIANGLES, numTriIndices, GL_UNSIGNED_SHORT, nullptr);
+    thigle(EXC_MSG("Drawing fan failed!"));
 
     // Set transformation matrix for second blade
 
@@ -114,14 +156,22 @@ void build_geometry( )
     // White to #5593e6
     GLfloat blueGradient[][4] =
             {
+                {0.33f, 0.58f, 0.9f, 1.0f},
+                {0.33f, 0.58f, 0.9f, 1.0f},
                 {1.0f, 1.0f, 1.0f, 1.0f},
-                {0.33f, 0.58f, 0.9f, 1.0f}
+                {1.0f, 1.0f, 1.0f, 1.0f},
+                {1.0f, 1.0f, 1.0f, 1.0f},
+                {1.0f, 1.0f, 1.0f, 1.0f}
             };
 
     // #0a522a to #00d962
     GLfloat greenGradient[][4] =
             {
                     {0.04f, 0.32f, 0.16f, 1.0f},
+                    {0.04f, 0.32f, 0.16f, 1.0f},
+                    {0.0f, 0.85f, 0.38f, 1.0f},
+                    {0.0f, 0.85f, 0.38f, 1.0f},
+                    {0.0f, 0.85f, 0.38f, 1.0f},
                     {0.0f, 0.85f, 0.38f, 1.0f}
             };
 
@@ -136,17 +186,24 @@ void build_geometry( )
     // #5c4e45
     GLfloat brown[][4] =
             {
+                {0.32f, 0.3f, 0.27f, 1.0f},
+                {0.32f, 0.3f, 0.27f, 1.0f},
+                {0.32f, 0.3f, 0.27f, 1.0f},
+                {0.32f, 0.3f, 0.27f, 1.0f},
+                {0.32f, 0.3f, 0.27f, 1.0f},
                 {0.32f, 0.3f, 0.27f, 1.0f}
             };
     // #a11212
     GLfloat red[][4] =
             {
+                {0.63f, 0.07f, 0.07f, 1.0f},
+                {0.63f, 0.07f, 0.07f, 1.0f},
                 {0.63f, 0.07f, 0.07f, 1.0f}
             };
 
 
     // Define face indices (ensure proper orientation)
-    GLushort indices[] = { 0, 1, 2, 3 };
+    GLushort indices[] = { 0, 1, 2, 2, 3, 0 };
 
     // Generate vertex buffers
     glGenBuffers(NumBuffers, Buffers);
@@ -160,9 +217,11 @@ void build_geometry( )
     glBufferData(GL_ARRAY_BUFFER, sizeof(blueGradient), blueGradient, GL_STATIC_DRAW);
     thigle(EXC_MSG("Binding sqskycolbuffer failed!"));
 
+
     glBindBuffer(GL_ARRAY_BUFFER, Buffers[SqGrassColBuffer]);
     glBufferData(GL_ARRAY_BUFFER, sizeof(greenGradient), greenGradient, GL_STATIC_DRAW);
     thigle(EXC_MSG("Binding sqgrasscolbuffer failed!"));
+
 
     glBindBuffer(GL_ARRAY_BUFFER, Buffers[SqHouseColBuffer]);
     glBufferData(GL_ARRAY_BUFFER, sizeof(brown), brown, GL_STATIC_DRAW);
