@@ -32,10 +32,11 @@ GLuint model_mat_loc;
 const char *vertex_shader = "../trans.vert";
 const char *frag_shader = "../trans.frag";
 
+/* Welcome to "Madison Overcomplicates Everything" */
 void drawSun(GLfloat x_origin, GLfloat y_origin, GLfloat radius, GLint numSides)
 {
-    int numVerts = numSides + 1;
-    GLfloat step = 2 * M_PI / (numVerts + 1);
+    int numVerts = numSides * 2;
+    GLfloat step = 2 * M_PI / ( numVerts + 1 );
 
     std::vector<GLfloat> vertX;
     std::vector<GLfloat> vertY;
@@ -43,16 +44,16 @@ void drawSun(GLfloat x_origin, GLfloat y_origin, GLfloat radius, GLint numSides)
     vertX.push_back(x_origin);
     vertY.push_back(y_origin);
 
-    for(int i = 1; i < numVerts; i++)
+    for(int i = 0; i < numVerts + 1; i++)
     {
         GLfloat x = x_origin + cos(step * i) * radius;
-        GLfloat y = y_origin + sin(step * i) * radius;
+        GLfloat y = y_origin - sin(step * i) * radius;
         vertX.push_back(x);
         vertY.push_back(y);
     }
 
     std::vector<GLfloat> allVerts;
-    for(int i = 0; i < numVerts; i++)
+    for(int i = 0; i < vertX.size(); i++)
     {
         allVerts.push_back(vertX[i]);
         allVerts.push_back(vertY[i]);
@@ -62,26 +63,24 @@ void drawSun(GLfloat x_origin, GLfloat y_origin, GLfloat radius, GLint numSides)
     glBindVertexArray(VAOs[Sun]);
 
     // Define sun vertices and colors
-    std::vector<GLint> sunIndices(allVerts.size()/2);
+    std::vector<GLushort> sunIndices(allVerts.size()/2);
     std::iota(sunIndices.begin(), sunIndices.end(), 0);
+    sunIndices.push_back(1);
 
     // White to #ffe675
-    GLfloat yellowGradient[][4] =
-            {
-                    {1.0f, 1.0f, 1.0f, 1.0f},
-                    {1.0f, 0.97f, 0.46f, 1.0f}
-            };
-
+    std::vector<vmath::vec4> yellowGradient(allVerts.size() / 2);
+    std::fill(yellowGradient.begin(), yellowGradient.end(), vmath::vec4(1.0f, 0.97f, 0.46f, 1.0f));
+    yellowGradient[0] = vmath::vec4(1.0f, 1.0f, 1.0f, 1.0f);
 
     // Bind sun vertex and color buffers
     glBindBuffer(GL_ARRAY_BUFFER, Buffers[SunPosBuffer]);
-    glBufferData(GL_ARRAY_BUFFER, sunIndices.size(), sunIndices.data(), GL_STATIC_DRAW);
+    glBufferData(GL_ARRAY_BUFFER, allVerts.size() * sizeof(GLfloat), allVerts.data(), GL_STATIC_DRAW);
 
     glBindBuffer(GL_ARRAY_BUFFER, Buffers[SunColBuffer]);
-    glBufferData(GL_ARRAY_BUFFER, sizeof(yellowGradient), yellowGradient, GL_STATIC_DRAW);
+    glBufferData(GL_ARRAY_BUFFER, yellowGradient.size() * sizeof(vmath::vec4), yellowGradient.data(), GL_STATIC_DRAW);
 
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, Buffers[SunIndexBuffer]);
-    glBufferData(GL_ELEMENT_ARRAY_BUFFER, sunIndices.size(), sunIndices.data(), GL_STATIC_DRAW);
+    glBufferData(GL_ELEMENT_ARRAY_BUFFER, sunIndices.size() * sizeof(GLushort), sunIndices.data(), GL_STATIC_DRAW);
     numSunIndices = sunIndices.size();
 }
 
@@ -205,9 +204,11 @@ void render_scene( )
     glVertexAttribPointer(vCol, colCoords, GL_FLOAT, GL_FALSE, 0, nullptr);
     glEnableVertexAttribArray(vCol);
 
-/*    model_matrix = vmath::mat4::identity();
+    model_matrix = vmath::mat4::identity();
+    trans_matrix = vmath::translate(-0.65f, 0.6f, 0.0f);
+    model_matrix = trans_matrix;
     glUniformMatrix4fv(model_mat_loc, 1, GL_FALSE, model_matrix);
-*/
+
     glDrawElements(GL_TRIANGLE_FAN, numSunIndices, GL_UNSIGNED_SHORT, nullptr);
     thigle(EXC_MSG("You can't draw a circle to save your life"));
 
@@ -305,7 +306,7 @@ void build_geometry( )
     glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
     thigle(EXC_MSG("Binding square index buffers failed!"));
 
-    drawSun(0.0f, 0.0f, 1.0f, 10);
+    drawSun(0.0f, 0.0f, 0.2f, 100);
 
 }
 
